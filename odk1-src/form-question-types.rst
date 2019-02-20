@@ -404,6 +404,11 @@ Collects only a month and year.
 Year only
 """"""""""""
 
+type
+  :tc:`date`
+appearance
+  :tc:`year`
+
 Collects only a year.
 
 .. image:: /img/form-widgets/year-spinner.*
@@ -1033,16 +1038,23 @@ To make an image with selectable regions:
 
 .. _image-options:
 
-Including images as choices
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Including image, video, or audio files as choices
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To include images as choices for select questions:
+To include image, video, or audio files as choices for select questions:
 
-#. Specify the file name in the **choices** worksheet,
-   in a column labeled :th:`media::image`. 
-#. Add the images to a folder named
+1. Specify the file names in the **choices** worksheet, in a column labeled as :th:`media::image` for image files, :th:`media::video` for video files, and :th:`media::audio` for audio files respectively.
+
+  .. csv-table:: choices
+    :header: list_name, name, label, media::image, media::video, media::audio
+
+    opt_media,a,A,a.jpg
+    opt_media,b,B,,b.mp4
+    opt_media,c,C,,,c.mp3
+
+2. Add the files to a folder named
    :file:`{form-name}-media`.
-#. Upload the media folder with your form.
+3. Upload the media folder with your form.
 
    - If you are hosting your form in :doc:`aggregate-intro`,
      you will have the option to upload the media file with your form,
@@ -1634,7 +1646,7 @@ Records audio from an external app.
 .. image:: /img/form-widgets/audio-start.*
   :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "Please record your name." There are three buttons: Record Sound, Choose Sound and Play Sound. The "Play Sound" button is disabled.
 
-.. rubric:: XLSForm Rows
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label
@@ -1658,7 +1670,7 @@ Records video, using the device camera.
 .. image:: /img/form-widgets/video2.*
   :alt: The Video form widget as displayed previously. The question text is "Please record a video of yourself blinking." The hint text is "Three times is probably sufficient." Below that are three buttons: Record Video, Choose Video, and Play Video. All three buttons are enabled.
 
-.. rubric:: XLSForm Rows
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, hint
@@ -2128,6 +2140,10 @@ The :tc:`field-list` appearance attribute, applied to a group of widgets, displa
   Therefore,
   including a question and its dependent together in a field list
   will not work as expected.
+
+.. seealso::
+
+  :ref:`groups` and :ref:`repeats`.
 
 Select widgets included in a :tc:`field-list` group can have one of several :th:`appearance` attributes:
 
